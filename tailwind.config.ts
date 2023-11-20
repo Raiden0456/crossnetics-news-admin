@@ -15,6 +15,17 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  safelist: [
+    {
+      pattern: /bg-.+/,
+    },
+  ],
+  plugins: [
+    require("@tailwindcss/forms"),
+    require("@catppuccin/tailwindcss")({
+      prefix: "ctp",
+      defaultFlavour: "latte",
+    }),
+  ],
 }
 export default config
