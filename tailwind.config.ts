@@ -21,7 +21,6 @@ const config: Config = {
     },
   ],
   plugins: [
-    require("@tailwindcss/forms"),
     require("@catppuccin/tailwindcss")({
       prefix: "ctp",
       defaultFlavour: "latte",
