@@ -1,12 +1,7 @@
 'use client'
-
 import React from 'react';
 
-interface LoginCardProps {
-}
-
-const LoginCard: React.FC<LoginCardProps> = (props) => {
-
+const LoginCard: React.FC = (props) => {
   return (
     <div className="rounded-2xl p-8 outline-ctp-pink outline outline-2 w-[500px] shadow-lg">
         <h1 className="text-4xl font-extrabold capitalize mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-ctp-blue to-ctp-mauve">
