@@ -8,8 +8,8 @@ interface TableButton {
 
 export const TableButton: FC<TableButton> = ({ color, text }) => (
   <div
-    className={`h-7 px-5 py-1 bg-${color}-200 rounded-lg flex items-center`}
+    className={`h-7 px-5 py-1 bg-ctp-${color} rounded-lg flex items-center`}
   >
-    <span className='text-slate-500 text-xs font-medium'>{text}</span>
+    <span className=' text-ctp-mantle text-xs font-medium'>{text}</span>
   </div>
 )

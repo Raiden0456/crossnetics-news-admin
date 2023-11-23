@@ -3,14 +3,16 @@ import React, { FC } from 'react'
 
 interface TableCellProps {
   children: React.ReactNode
-  width: string
+  width: string,
+  text_align?: string,
 }
 export const TableCell: FC<TableCellProps> = ({
   children,
   width,
+  text_align = 'text-start',
 }) => (
   <div
-    className={`text-center text-slate-300 text-xs font-medium ${width}`}
+    className={`${text_align} text-ctp-text text-xs font-medium ${width}`}
   >
     {children}
   </div>

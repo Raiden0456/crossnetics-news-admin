@@ -32,23 +32,23 @@ export const Pagination: FC<PaginationProps> = ({
   }
 
   return (
-    <div className='flex items-center space-x-2'>
+    <div className='flex items-center space-x-2 text-ctp-mantle'>
       <button
         onClick={() => setCurrentPage(currentPage - 1)}
         disabled={currentPage === 1}
-        className='p-2 bg-ctp-blue rounded-xl'
+        className='py-1 px-3 bg-ctp-pink rounded-xl'
       >
         {'<'}
       </button>
       {pageNumbers.map((number, index) => (
         <React.Fragment key={number}>
           {index > 0 && pageNumbers[index - 1] !== number - 1 && (
-            <span className='p-2'>...</span>
+            <div className='py-1 px-3 rounded-full bg-ctp-surface2 text-center'>...</div>
           )}
           <button
             onClick={() => paginate(number)}
-            className={`p-2 rounded-full ${
-              currentPage === number ? 'bg-blue-200' : 'bg-blue-100'
+            className={`py-1 px-3 rounded-full ${
+              currentPage === number ? 'bg-ctp-lavender' : 'bg-ctp-surface2'
             }`}
           >
             {number}
@@ -58,14 +58,14 @@ export const Pagination: FC<PaginationProps> = ({
       <button
         onClick={() => setCurrentPage(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className='p-2 bg-ctp-blue rounded-xl'
+        className='py-1 px-3 bg-ctp-pink rounded-xl'
       >
         {'>'}
       </button>
       <select
         value={itemsPerPage}
         onChange={e => setItemsPerPage(Number(e.target.value))}
-        className='rounded-md p-1 text-ctp-mantle'
+        className='rounded-md p-1 text-ctp-surface2'
       >
         {[5, 10, 20].map(number => (
           <option key={number} value={number}>

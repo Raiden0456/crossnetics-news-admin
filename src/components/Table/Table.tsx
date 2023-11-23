@@ -23,7 +23,7 @@ export const Table: FC = () => {
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
   return (
-    <div className='flex w-full flex-col items-center gap-12'>
+    <div className='flex w-full flex-col items-center gap-12 mb-10'>
       <TableHeader />
 
       <div className='flex flex-col gap-5 w-full max-w-screen-lg'>
