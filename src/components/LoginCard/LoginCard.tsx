@@ -38,7 +38,7 @@ const LoginCard: React.FC = props => {
       <div className='flex justify-center'>
         <button
           type='button'
-          className='bg-ctp-lavender hover:bg-ctp-lavender uppercase text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline m-auto'
+          className='bg-ctp-lavender transition-transform hover:scale-105 active:scale-100 uppercase text-mantle font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline m-auto'
         >
           Log in
         </button>
