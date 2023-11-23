@@ -1,0 +1,5 @@
+{
+    "window.commandCenter": true,
+    "window.density.editorTabHeight": "default",
+    "workbench.activityBar.iconClickBehavior": "toggle"
+}
