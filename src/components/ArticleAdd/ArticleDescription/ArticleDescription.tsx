@@ -3,7 +3,7 @@
 import React from 'react'
 
 // components
-import { UploadBlock } from '@/components/ArticleAdd/UploadBlock'
+import { UploadBlock } from '@/components/ArticleAdd/ArticleUploadBlock/UploadBlock'
 
 export const ArticleDescription = () => {
   const handleImageUpload = (file: File) => {
@@ -11,7 +11,7 @@ export const ArticleDescription = () => {
   }
   return (
     <div className='w-full max-w-screen-lg px-7 py-5 bg-ctp-mantle rounded-xl flex justify-between mx-auto'>
-      <UploadBlock onImageUpload={handleImageUpload} />
+      <UploadBlock onImageUpload={handleImageUpload} visible={true} />
     </div>
   )
 }
