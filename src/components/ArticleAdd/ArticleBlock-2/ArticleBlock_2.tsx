@@ -24,9 +24,9 @@ export const ArticleBlock2: FC<ArticleBlock2Props> = ({
         blog={''}
         news={''}
         visible={false}
-        titleLeft='Tittle H1'
+        titleLeft='Title H1'
         tagLeft='h1'
-        titleRight='Tittle H2'
+        titleRight='Title H2'
         tagRight='h2'
         className='justify-start items-center gap-3 w-full'
         paddingX='px-0'
@@ -36,7 +36,7 @@ export const ArticleBlock2: FC<ArticleBlock2Props> = ({
 
       <button
         onClick={addNewBlock}
-        className='w-full bg-none border-2 border-ctp-surface1 p-3 rounded-2xl text-ctp-surface2 font-bold hover:bg-ctp-subtext0'
+        className='w-full bg-ctp-crust border border-ctp-surface2 p-3 rounded-2xl text-ctp-text font-bold hover:bg-ctp-surface0'
       >
         Add Block
       </button>

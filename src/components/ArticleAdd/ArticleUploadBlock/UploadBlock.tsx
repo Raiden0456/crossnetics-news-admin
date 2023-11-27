@@ -34,7 +34,7 @@ export const UploadBlock: React.FC<UploadBlockProps> = ({
     }
   }
   return (
-    <div className='p-4 flex w-full justify-between gap-6'>
+    <div className='pb-4 flex w-full justify-between gap-6'>
       <ImageUpload
         handleImageChange={handleImageChange}
         imageUrl={imageUrl}

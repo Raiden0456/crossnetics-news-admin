@@ -49,11 +49,11 @@ export const ArticleHeader: FC<ArticleHeaderProps> = ({
       className={`w-full max-w-screen-lg ${paddingX} py-5 bg-ctp-mantle rounded-xl flex justify-between mx-auto`}
     >
       <div className={`flex ${className}`}>
-        <div className='text-ctp-text text-xs font-extrabold uppercase px-10 py-3 bg-ctp-surface0 rounded-xl hover:bg-ctp-maroon duration-200'>
+        <div className='cursor-pointer text-ctp-text text-xs font-extrabold uppercase px-10 py-3 bg-ctp-surface0 rounded-xl hover:bg-ctp-lavender hover:text-ctp-mantle duration-200'>
           {blog !== '' ? blog : <Tag>{titleLeft}</Tag>}
         </div>
 
-        <div className='text-ctp-text text-xs font-extrabold uppercase px-10 py-3 bg-ctp-surface0 rounded-xl hover:bg-ctp-maroon duration-200'>
+        <div className='cursor-pointer text-ctp-text text-xs font-extrabold uppercase px-10 py-3 bg-ctp-surface0 rounded-xl hover:bg-ctp-lavender hover:text-ctp-mantle duration-200'>
           {news !== '' ? news : <Tag>{titleRight}</Tag>}
         </div>
       </div>
