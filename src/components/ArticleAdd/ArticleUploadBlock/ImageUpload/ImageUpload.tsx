@@ -4,14 +4,22 @@ import React, { FC } from 'react'
 interface ImageUploadProps {
   imageUrl: string | null
   handleImageChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  bgColor?: string
+  padding?: string
+  borderRadius?: string
 }
 
 export const ImageUpload: FC<ImageUploadProps> = ({
   imageUrl,
   handleImageChange,
+  bgColor,
+  padding,
+  borderRadius,
 }) => {
   return (
-    <div className='flex flex-col gap-5'>
+    <div
+      className={`flex flex-col gap-5 ${bgColor} ${padding} ${borderRadius}`}
+    >
       <div
         className='flex flex-col items-center justify-center w-[301px] h-[145px] p-4 border-2 border-dashed border-ctp-pink rounded-2xl overflow-hidden text-ctp-subtext1'
         style={{
@@ -40,7 +48,9 @@ export const ImageUpload: FC<ImageUploadProps> = ({
       </div>
 
       <div>
-        <p className='text-ctp-subtext1 pb-4'>Copyright</p>
+        <p className='text-ctp-subtext1 pb-4'>
+          Image&apos;s Copyright
+        </p>
 
         <input
           type='text'

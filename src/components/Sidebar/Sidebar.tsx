@@ -7,6 +7,7 @@ import Image from 'next/image'
 // image
 import avatar from '../../assets/avatar.png'
 import { StatCard } from '@/components/Sidebar/StatCard/StatCard'
+import Link from 'next/link'
 
 export const Sidebar = () => {
   return (
@@ -34,7 +35,7 @@ export const Sidebar = () => {
         <StatCard title='Likes' value='420' />
       </div>
       <button className='py-3 px-10 bg-ctp-pink text-ctp-mantle text-xs font-extrabold uppercase rounded-2xl hover:scale-105 active:scale-100 transition-all duration-200'>
-        New article
+        <Link href='/post'>New article</Link>
       </button>
     </div>
   )

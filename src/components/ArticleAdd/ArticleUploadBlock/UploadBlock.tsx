@@ -1,11 +1,6 @@
 'use client'
 // library
-import React, {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import React from 'react'
 
 // components
 import { ImageUpload } from '@/components/ArticleAdd/ArticleUploadBlock/ImageUpload/ImageUpload'
@@ -15,11 +10,17 @@ import { Select } from '@/components/Select/Select'
 interface UploadBlockProps {
   onImageUpload: (file: File) => void
   visible: boolean
+  bgColor?: string
+  padding?: string
+  borderRadius?: string
 }
 
 export const UploadBlock: React.FC<UploadBlockProps> = ({
   onImageUpload,
   visible,
+  bgColor,
+  padding,
+  borderRadius,
 }) => {
   const [imageUrl, setImageUrl] = React.useState<string | null>(null)
 
@@ -33,10 +34,13 @@ export const UploadBlock: React.FC<UploadBlockProps> = ({
     }
   }
   return (
-    <div className='p-4 flex justify-between w-full gap-6'>
+    <div className='p-4 flex w-full justify-between gap-6'>
       <ImageUpload
         handleImageChange={handleImageChange}
         imageUrl={imageUrl}
+        bgColor={bgColor}
+        padding={padding}
+        borderRadius={borderRadius}
       />
 
       <div

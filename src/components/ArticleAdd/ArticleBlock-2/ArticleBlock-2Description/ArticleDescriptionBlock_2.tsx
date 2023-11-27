@@ -38,6 +38,9 @@ export const ArticleDescriptionBlock2 = () => {
       <UploadBlock
         onImageUpload={handleImageUpload}
         visible={false}
+        bgColor='bg-ctp-surface1'
+        padding='p-3'
+        borderRadius='rounded-3xl'
       />
     </div>
   )

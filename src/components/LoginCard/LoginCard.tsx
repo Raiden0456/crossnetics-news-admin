@@ -1,5 +1,6 @@
 'use client'
 import React from 'react'
+import Link from 'next/link'
 
 const LoginCard: React.FC = props => {
   return (
@@ -40,7 +41,7 @@ const LoginCard: React.FC = props => {
           type='button'
           className='bg-ctp-lavender transition-transform hover:scale-105 active:scale-100 uppercase text-mantle font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline m-auto'
         >
-          Log in
+          <Link href='/admin'>Log in</Link>
         </button>
       </div>
     </div>
