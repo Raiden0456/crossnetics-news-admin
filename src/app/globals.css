@@ -19,3 +19,11 @@ div[class='ql-editor ql-blank']::before {
 .ql-toolbar .ql-formats span span svg polyline {
   stroke: #e0e0e0;
 }
+.ql-toolbar {
+  border: 1px solid #ccc;
+  border-radius: 10px 10px 0 0;
+}
+.ql-container {
+  border: 1px solid #ccc;
+  border-radius: 0 0 10px 10px;
+}
