@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+div[class='ql-editor ql-blank']::before {
+  color: #e0e0e0 !important;
+}
+.ql-toolbar .ql-picker-label,
+.ql-toolbar .ql-picker-item {
+  color: #e0e0e0;
+}
+.ql-toolbar .ql-formats button svg path,
+.ql-toolbar .ql-formats button svg line,
+.ql-toolbar .ql-formats button svg rect,
+.ql-toolbar .ql-formats button svg circle,
+.ql-toolbar .ql-formats button svg polyline,
+.ql-toolbar .ql-formats button svg polygon,
+.ql-toolbar .ql-formats span span svg line,
+.ql-toolbar .ql-formats span span svg polyline {
+  stroke: #e0e0e0;
+}

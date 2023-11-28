@@ -50,7 +50,7 @@ export const ArticleDescriptionBlock2 = () => {
           value={value}
           onChange={setValue}
           modules={moduleOptions}
-          className='h-fit mb-14 text-ctp-text placeholder:text-ctp-text'
+          className='h-fit mb-14 text-ctp-text'
           placeholder='Text Block'
         />
       </div>
