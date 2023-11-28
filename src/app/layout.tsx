@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className='ctp-mocha bg-ctp-base'>{children}</body>
+      <body className='ctp-mocha bg-cover bg-[url(/roses.png)]'>{children}</body>
     </html>
   )
 }
