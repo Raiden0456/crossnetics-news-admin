@@ -15,6 +15,8 @@ interface ArticleHeaderProps {
   tagRight?: keyof React.ReactHTML
   className?: string
   paddingX?: string
+  numberOfBlock: number
+  removeBlock: () => void
 }
 
 const ButtonContainer: FC<{
@@ -41,6 +43,8 @@ export const ArticleHeader: FC<ArticleHeaderProps> = ({
   tagRight = 'h2',
   className,
   paddingX,
+  numberOfBlock,
+  removeBlock,
 }) => {
   const Tag = tagLeft || tagRight
 
@@ -74,6 +78,17 @@ export const ArticleHeader: FC<ArticleHeaderProps> = ({
             </span>
           </div>
         </ButtonContainer>
+      )}
+
+      {numberOfBlock > 0 && !visible ? (
+        <div
+          className='cursor-pointer w-11 h-11 rounded-full transition-color duration-200 border border-ctp-maroon hover:bg-ctp-maroon flex justify-center items-center'
+          onClick={removeBlock}
+        >
+          <Image src={basket} alt='basket' />
+        </div>
+      ) : (
+        ''
       )}
     </div>
   )

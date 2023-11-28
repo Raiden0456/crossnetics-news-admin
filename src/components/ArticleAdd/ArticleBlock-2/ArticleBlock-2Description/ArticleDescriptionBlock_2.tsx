@@ -1,12 +1,37 @@
 'use client'
-import React from 'react'
+// library
+import React, { useState } from 'react'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+
+// components
 import { UploadBlock } from '@/components/ArticleAdd/ArticleUploadBlock/UploadBlock'
 import { Input } from '@/components/Input/Input'
 
 export const ArticleDescriptionBlock2 = () => {
+  const [value, setValue] = useState('')
   const handleImageUpload = (file: File) => {
     // Обработка файла изображения
   }
+
+  const moduleOptions = {
+    toolbar: [
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      [{ font: [] }],
+      ['bold', 'italic', 'underline', 'strike'],
+      ['image', 'code-block'],
+      ['blockquote', 'code-block'],
+
+      [{ list: 'ordered' }, { list: 'bullet' }],
+      [{ script: 'sub' }, { script: 'super' }],
+      [{ indent: '-1' }, { indent: '+1' }],
+      [{ direction: 'rtl' }],
+
+      [{ color: [] }, { background: [] }],
+      [{ align: [] }],
+    ],
+  }
+
   return (
     <div className='w-full flex flex-col gap-6'>
       <div className='w-full flex flex-col gap-3'>
@@ -19,29 +44,24 @@ export const ArticleDescriptionBlock2 = () => {
           id='title'
         />
       </div>
-      <div className='w-full flex flex-col gap-3'>
-        <label
-          htmlFor='TextBlock'
-          className='text-ctp-subtext1 font-bold px-2'
-        >
-          Text Block
-        </label>
-        <textarea
-          name='textBlock'
-          id='TextBlock'
+      <div className='w-full flex flex-col gap-3 h-full'>
+        <ReactQuill
+          theme='snow'
+          value={value}
+          onChange={setValue}
+          modules={moduleOptions}
+          className='h-fit mb-14 text-ctp-text placeholder:text-ctp-text'
           placeholder='Text Block'
-          className='mb-2 p-2 rounded-xl placeholder:px-4 bg-ctp-crust text-ctp-text focus:outline-none border-ctp-pink border focus:border-ctp-lavender resize-none'
-          style={{ height: ' 140px' }}
         />
       </div>
 
-      <UploadBlock
-        onImageUpload={handleImageUpload}
-        visible={false}
-        bgColor='bg-ctp-crust'
-        padding='p-3'
-        borderRadius='rounded-3xl'
-      />
+      {/*<UploadBlock*/}
+      {/*  onImageUpload={handleImageUpload}*/}
+      {/*  visible={false}*/}
+      {/*  bgColor='bg-ctp-crust'*/}
+      {/*  padding='p-3'*/}
+      {/*  borderRadius='rounded-3xl'*/}
+      {/*/>*/}
     </div>
   )
 }

@@ -13,6 +13,10 @@ export const Article: FC = () => {
   const addNewBlock = () => {
     setBlock([...block, {}])
   }
+  const removeBlock = (index: number) => {
+    const newBlocks = block.filter((_, i) => i !== index)
+    setBlock(newBlocks)
+  }
 
   return (
     <div className='flex w-full flex-col items-center gap-12 mb-10'>
@@ -34,6 +38,7 @@ export const Article: FC = () => {
           key={index}
           addNewBlock={addNewBlock}
           numberOfBlock={index}
+          removeBlock={() => removeBlock(index)}
         />
       ))}
     </div>

@@ -8,11 +8,13 @@ import { ArticleDescriptionBlock2 } from '@/components/ArticleAdd/ArticleBlock-2
 interface ArticleBlock2Props {
   addNewBlock: () => void
   numberOfBlock: number
+  removeBlock: () => void
 }
 
 export const ArticleBlock2: FC<ArticleBlock2Props> = ({
   addNewBlock,
   numberOfBlock,
+  removeBlock,
 }) => {
   return (
     <div className='w-full max-w-screen-lg px-7 py-5 bg-ctp-mantle rounded-xl flex flex-col'>
@@ -30,13 +32,15 @@ export const ArticleBlock2: FC<ArticleBlock2Props> = ({
         tagRight='h2'
         className='justify-start items-center gap-3 w-full'
         paddingX='px-0'
+        numberOfBlock={numberOfBlock}
+        removeBlock={removeBlock}
       />
 
       <ArticleDescriptionBlock2 />
 
       <button
         onClick={addNewBlock}
-        className='w-full bg-ctp-crust border border-ctp-surface2 p-3 rounded-2xl text-ctp-text font-bold hover:bg-ctp-surface0'
+        className='w-full bg-ctp-crust border border-ctp-surface2 p-3 rounded-2xl text-ctp-text font-bold hover:bg-ctp-surface0 mt-5'
       >
         Add Block
       </button>
