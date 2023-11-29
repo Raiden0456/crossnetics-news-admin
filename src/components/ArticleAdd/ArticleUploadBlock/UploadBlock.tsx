@@ -55,9 +55,9 @@ export const UploadBlock: React.FC<UploadBlockProps> = ({
         }`}
       >
         <Input
-          id='tittle'
-          label='Tittle'
-          placeholder='Tittle'
+          id='title'
+          label='Title'
+          placeholder='Title'
           className='mb-2 p-2 rounded-full placeholder:px-4 bg-ctp-crust text-ctp-text focus:outline-none border-ctp-pink border focus:border-ctp-lavender'
           htmlFor='title'
           labelClassName='text-ctp-subtext1 font-bold px-2'

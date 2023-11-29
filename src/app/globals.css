@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 div[class='ql-editor ql-blank']::before {
-  color: #e0e0e0 !important;
+  color: #cdd6f4 !important;
 }
 .ql-toolbar .ql-picker-label,
 .ql-toolbar .ql-picker-item {
-  color: #e0e0e0;
+  color: #cdd6f4;
 }
 .ql-toolbar .ql-formats button svg path,
 .ql-toolbar .ql-formats button svg line,
@@ -17,13 +17,17 @@ div[class='ql-editor ql-blank']::before {
 .ql-toolbar .ql-formats button svg polygon,
 .ql-toolbar .ql-formats span span svg line,
 .ql-toolbar .ql-formats span span svg polyline {
-  stroke: #e0e0e0;
+  stroke: #cdd6f4;
 }
 .ql-toolbar {
-  border: 1px solid #ccc;
+  border: 1px solid;
+  border-color: #f5c2e7 !important;
   border-radius: 10px 10px 0 0;
+  background-color: #11111b;
 }
 .ql-container {
-  border: 1px solid #ccc;
+  border: 1px solid;
+  border-color: #f5c2e7 !important;
   border-radius: 0 0 10px 10px;
+  background-color: #11111b;
 }

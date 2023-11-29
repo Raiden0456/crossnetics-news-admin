@@ -15,8 +15,9 @@ interface ArticleHeaderProps {
   tagRight?: keyof React.ReactHTML
   className?: string
   paddingX?: string
-  numberOfBlock: number
-  removeBlock: () => void
+  paddingY?: string
+  numberOfBlock?: number
+  removeBlock?: () => void
 }
 
 const ButtonContainer: FC<{
@@ -43,6 +44,7 @@ export const ArticleHeader: FC<ArticleHeaderProps> = ({
   tagRight = 'h2',
   className,
   paddingX,
+  paddingY = 'py-5',
   numberOfBlock,
   removeBlock,
 }) => {
@@ -50,7 +52,7 @@ export const ArticleHeader: FC<ArticleHeaderProps> = ({
 
   return (
     <div
-      className={`w-full max-w-screen-lg ${paddingX} py-5 bg-ctp-mantle rounded-xl flex justify-between mx-auto`}
+      className={`w-full max-w-screen-lg ${paddingX} ${paddingY}  bg-ctp-mantle rounded-xl flex justify-between mx-auto`}
     >
       <div className={`flex ${className}`}>
         <div className='cursor-pointer text-ctp-text text-xs font-extrabold uppercase px-10 py-3 bg-ctp-surface0 rounded-xl hover:bg-ctp-lavender hover:text-ctp-mantle duration-200'>
@@ -80,7 +82,7 @@ export const ArticleHeader: FC<ArticleHeaderProps> = ({
         </ButtonContainer>
       )}
 
-      {numberOfBlock > 0 && !visible ? (
+      {numberOfBlock && (numberOfBlock > 0 && !visible) ? (
         <div
           className='cursor-pointer w-11 h-11 rounded-full transition-color duration-200 border border-ctp-maroon hover:bg-ctp-maroon flex justify-center items-center'
           onClick={removeBlock}
