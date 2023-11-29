@@ -7,7 +7,7 @@ import { ArticleDescriptionBlock2 } from '@/components/ArticleAdd/ArticleBlock-2
 
 interface ArticleBlock2Props {
   addNewBlock: () => void
-  numberOfBlock: number
+  numberOfBlock: number 
   removeBlock: () => void
 }
 
