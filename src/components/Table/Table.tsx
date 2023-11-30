@@ -26,15 +26,15 @@ export const Table: FC = () => {
     <div className='flex w-full flex-col items-center gap-12 mb-10'>
       <TableHeader />
 
-      <div className='flex flex-col gap-5 w-full max-w-screen-lg'>
+      <div className='flex flex-col gap-5 w-full lg:max-w-screen-md xl:max-w-screen-lg'>
         {currentItems.map((data, index) => (
           <TableRow
             key={index}
             date={data.date}
             title={data.title}
             category={data.category}
-            likes={data.likes.toString()}
-            views={data.views.toString()}
+            likes={data.likes}
+            views={data.views}
             author={data.author}
           />
         ))}

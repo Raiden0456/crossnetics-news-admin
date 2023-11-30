@@ -3,8 +3,8 @@ import React, { FC } from 'react'
 
 interface TableCellProps {
   children: React.ReactNode
-  width: string,
-  text_align?: string,
+  width: string
+  text_align?: string
 }
 export const TableCell: FC<TableCellProps> = ({
   children,

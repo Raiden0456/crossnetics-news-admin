@@ -31,6 +31,15 @@ export const Pagination: FC<PaginationProps> = ({
     }
   }
 
+  const handleChangeItemsPerPage = (newItemsPerPage: number) => {
+    const newTotalPages = Math.ceil(totalItems / newItemsPerPage)
+    if (currentPage > newTotalPages) {
+      // Не изменяем, если текущая страница будет пустой
+      return
+    }
+    setItemsPerPage(newItemsPerPage)
+  }
+
   return (
     <div className='flex items-center space-x-2 text-ctp-mantle'>
       <button
@@ -43,12 +52,16 @@ export const Pagination: FC<PaginationProps> = ({
       {pageNumbers.map((number, index) => (
         <React.Fragment key={number}>
           {index > 0 && pageNumbers[index - 1] !== number - 1 && (
-            <div className='py-1 px-3 rounded-full bg-ctp-surface2 text-center'>...</div>
+            <div className='py-1 px-3 rounded-full bg-ctp-surface2 text-center'>
+              ...
+            </div>
           )}
           <button
             onClick={() => paginate(number)}
             className={`py-1 px-3 rounded-full ${
-              currentPage === number ? 'bg-ctp-lavender' : 'bg-ctp-surface2'
+              currentPage === number
+                ? 'bg-ctp-lavender'
+                : 'bg-ctp-surface2'
             }`}
           >
             {number}
@@ -64,7 +77,9 @@ export const Pagination: FC<PaginationProps> = ({
       </button>
       <select
         value={itemsPerPage}
-        onChange={e => setItemsPerPage(Number(e.target.value))}
+        onChange={e =>
+          handleChangeItemsPerPage(Number(e.target.value))
+        }
         className='rounded-md p-1 text-ctp-surface2'
       >
         {[5, 10, 20].map(number => (

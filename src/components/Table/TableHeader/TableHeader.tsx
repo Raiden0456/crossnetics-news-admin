@@ -2,7 +2,7 @@
 import React, { FC } from 'react'
 
 export const TableHeader: FC = () => (
-  <div className='w-full max-w-screen-lg px-7 py-5 bg-ctp-mantle rounded-xl flex justify-between mx-auto'>
+  <div className='w-full px-7 py-5 bg-ctp-mantle rounded-xl flex justify-between mx-auto lg:max-w-screen-md xl:max-w-screen-lg'>
     <div className='w-20 text-center text-ctp-text text-xs font-medium'>
       Date
     </div>

@@ -7,7 +7,7 @@ import { ArticleDescriptionBlock2 } from '@/components/ArticleAdd/ArticleBlock-2
 
 interface ArticleBlock2Props {
   addNewBlock: () => void
-  numberOfBlock: number 
+  numberOfBlock: number
   removeBlock: () => void
 }
 
@@ -41,7 +41,7 @@ export const ArticleBlock2: FC<ArticleBlock2Props> = ({
 
       <button
         onClick={addNewBlock}
-        className='w-full bg-ctp-crust border border-ctp-surface2 p-3 rounded-2xl text-ctp-text font-bold hover:bg-ctp-surface0'
+        className='w-full bg-ctp-crust border border-ctp-surface2 p-3 rounded-2xl text-ctp-text font-bold hover:bg-ctp-surface0 mt-8'
       >
         Add Block
       </button>

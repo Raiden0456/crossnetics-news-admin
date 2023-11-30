@@ -11,7 +11,7 @@ import Link from 'next/link'
 
 export const Sidebar = () => {
   return (
-    <div className='w-52 h-[450px] py-4 bg-ctp-mantle outline outline-1 outline-ctp-pink rounded-[30px] flex flex-col items-center justify-between'>
+    <div className='w-60 h-[450px] py-4 bg-ctp-mantle outline outline-1 outline-ctp-pink rounded-[30px] flex flex-col items-center justify-between'>
       <div className='flex flex-col items-center gap-2.5'>
         <Image
           className='rounded-full'
@@ -30,9 +30,9 @@ export const Sidebar = () => {
         </div>
       </div>
       <div className='flex flex-col items-center gap-2.5'>
-        <StatCard title='Articles' value='243' />
-        <StatCard title='Views' value='3589' />
-        <StatCard title='Likes' value='420' />
+        <StatCard title='Articles' value={13900} />
+        <StatCard title='Views' value={15700} />
+        <StatCard title='Likes' value={25300} />
       </div>
       <button className='py-3 px-10 bg-ctp-pink text-ctp-mantle text-xs font-extrabold uppercase rounded-2xl hover:scale-105 active:scale-100 transition-all duration-200'>
         <Link href='/post'>New article</Link>

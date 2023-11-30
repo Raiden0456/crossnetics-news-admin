@@ -47,13 +47,13 @@ export const ArticleDescriptionBlock2 = () => {
           id='title'
         />
       </div>
-      <div className='w-full flex flex-col gap-3 h-full'>
+      <div className='w-full flex flex-col gap-10 h-full'>
         <ReactQuill
           theme='snow'
           value={value}
           onChange={setValue}
           modules={moduleOptions}
-          className='h-fit text-ctp-text'
+          className='h-fit text-ctp-text mb-14'
           placeholder='Text Block'
         />
       </div>
