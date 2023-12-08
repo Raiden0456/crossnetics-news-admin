@@ -3,11 +3,11 @@ import React from 'react'
 
 // components
 import Image from 'next/image'
+import Link from 'next/link'
+import { StatCard } from '@/components/Sidebar/StatCard/StatCard'
 
 // image
 import avatar from '../../assets/avatar.png'
-import { StatCard } from '@/components/Sidebar/StatCard/StatCard'
-import Link from 'next/link'
 
 export const Sidebar = () => {
   return (

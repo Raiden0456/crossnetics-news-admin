@@ -13,6 +13,8 @@ import { Input } from '@/components/Input/Input'
 
 export const ArticleDescriptionBlock2 = () => {
   const [value, setValue] = useState('')
+
+  console.log(value)
   const handleImageUpload = (file: File) => {
     // Обработка файла изображения
   }
