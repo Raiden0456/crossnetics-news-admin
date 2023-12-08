@@ -52,7 +52,7 @@ export const ArticleHeader: FC<ArticleHeaderProps> = ({
 
   return (
     <div
-      className={`w-full max-w-screen-lg ${paddingX} ${paddingY}  bg-ctp-mantle rounded-xl flex justify-between mx-auto md:max-w-screen-md`}
+      className={`w-full ${paddingX} ${paddingY}  bg-ctp-mantle rounded-xl flex justify-between mx-auto`}
     >
       <div className={`flex ${className}`}>
         <div className='cursor-pointer text-ctp-text text-xs font-extrabold uppercase px-10 py-3 bg-ctp-surface0 rounded-xl hover:bg-ctp-lavender hover:text-ctp-mantle duration-200'>
