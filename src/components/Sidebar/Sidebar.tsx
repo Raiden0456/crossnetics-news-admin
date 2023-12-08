@@ -11,7 +11,7 @@ import avatar from '../../assets/avatar.png'
 
 export const Sidebar = () => {
   return (
-    <div className='w-60 h-[450px] py-4 bg-ctp-mantle outline outline-1 outline-ctp-pink rounded-[30px] flex flex-col items-center justify-between'>
+    <div className='w-60 h-[450px] py-4 bg-ctp-mantle opacity-90 outline outline-1 outline-ctp-pink rounded-[30px] flex flex-col items-center justify-between'>
       <div className='flex flex-col items-center gap-2.5'>
         <Image
           className='rounded-full'

@@ -17,7 +17,7 @@ export const ArticleBlock2: FC<ArticleBlock2Props> = ({
   removeBlock,
 }) => {
   return (
-    <div className='w-full max-w-screen-lg px-7 py-5 bg-ctp-mantle rounded-xl flex flex-col gap-8'>
+    <div className='w-full max-w-screen-lg px-7 py-5 bg-ctp-mantle opacity-90 rounded-xl flex flex-col gap-8'>
       <h1 className='text-2xl w-full max-w-screen-lg mx-auto text-ctp-text italic'>
         Block #{numberOfBlock + 1}
       </h1>

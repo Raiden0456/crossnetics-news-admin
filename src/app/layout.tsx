@@ -26,7 +26,7 @@ export default function RootLayout({
     <html lang='en'>
       <ContextProvider>
         <ApolloProvider client={client}>
-          <body className='ctp-mocha bg-[url(/roses.png)] bg-repeat'>
+          <body className='ctp-mocha bg-[url(/cat-wallpaper.png)] bg-repeat'>
             {children}
           </body>
         </ApolloProvider>

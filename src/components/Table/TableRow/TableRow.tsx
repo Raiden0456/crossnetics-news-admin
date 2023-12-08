@@ -23,7 +23,7 @@ export const TableRow: FC<TableRowProps> = ({
   views,
   author,
 }) => (
-  <div className='px-7 py-5 bg-ctp-mantle rounded-3xl flex justify-between items-center  '>
+  <div className='px-7 py-5 bg-ctp-mantle opacity-90 rounded-3xl flex justify-between items-center  '>
     <TableCell width='w-20' text_align='text-center'>
       {date}
     </TableCell>
