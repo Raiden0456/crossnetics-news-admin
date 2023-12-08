@@ -1,8 +1,16 @@
+// library
+import React from 'react'
+import { ApolloProvider } from '@apollo/client'
+
 // meta
 import type { Metadata } from 'next'
 
+// config
+import { client } from '@/lib/apollo-client.config'
+
 // styles
 import './globals.css'
+import { ContextProvider } from '@/lib/context-config'
 
 export const metadata: Metadata = {
   title: 'Crossnetics',
@@ -16,7 +24,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className='ctp-mocha bg-[url(/roses.png)] bg-repeat'>{children}</body>
+      <ContextProvider>
+        <ApolloProvider client={client}>
+          <body className='ctp-mocha bg-[url(/roses.png)] bg-repeat'>
+            {children}
+          </body>
+        </ApolloProvider>
+      </ContextProvider>
     </html>
   )
 }
