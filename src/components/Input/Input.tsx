@@ -7,7 +7,10 @@ interface InputProps {
   className: string
   htmlFor: string
   labelClassName: string
-  id: string
+  id?: string
+  value?: string
+  onChange?: (e: any) => void
+  type?: string
 }
 
 export const Input: FC<InputProps> = ({
@@ -17,6 +20,9 @@ export const Input: FC<InputProps> = ({
   htmlFor,
   labelClassName,
   id,
+  value,
+  onChange,
+  type = 'text',
 }) => {
   return (
     <>
@@ -25,7 +31,9 @@ export const Input: FC<InputProps> = ({
       </label>
       <input
         id={id}
-        type='text'
+        type={type}
+        value={value}
+        onChange={onChange}
         placeholder={placeholder}
         className={className}
       />

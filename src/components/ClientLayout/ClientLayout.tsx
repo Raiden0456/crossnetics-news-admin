@@ -1,17 +1,18 @@
 'use client'
+// library
 import React, { FC } from 'react'
 import { client } from '@/lib/apollo-client.config'
-import { ContextProvider } from '@/lib/context-config'
 import { ApolloProvider } from '@apollo/client'
+import { MyProvider } from '@/context/MyContext'
 
-interface LayoutProps {
+interface ClientLayoutProps {
   children: React.ReactNode
 }
 
-export const Layout: FC<LayoutProps> = ({ children }) => {
+export const ClientLayout: FC<ClientLayoutProps> = ({ children }) => {
   return (
     <ApolloProvider client={client}>
-      <ContextProvider>{children}</ContextProvider>
+      <MyProvider>{children}</MyProvider>
     </ApolloProvider>
   )
 }

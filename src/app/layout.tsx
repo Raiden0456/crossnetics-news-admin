@@ -5,7 +5,7 @@ import React from 'react'
 import type { Metadata } from 'next'
 
 // components
-import { Layout } from '@/components/Layout/Layout'
+import { ClientLayout } from '@/components/ClientLayout/ClientLayout'
 
 // styles
 import './globals.css'
@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className='ctp-mocha bg-[url(/cat-wallpaper.png)] bg-repeat'>
-        <Layout>{children}</Layout>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   )
