@@ -12,31 +12,28 @@ import { useAuthCheck } from '@/hooks/useAuthCheck'
 
 //mock
 import { tableData } from '@/components/Table/table-mock/table-mock'
-import { GET_POSTS_QUERY } from '@/lib/apollo/getPosts'
+import { GET_POSTS_QUERY_TABLE } from '@/lib/apollo/getPosts'
 import { useQuery } from '@apollo/client'
 import { Oval } from 'react-loader-spinner'
 
-export interface Post {
-  id: string
-  title: string
-  titleType: string
-}
-
 export interface Description {
+  title: string
   author: string
   date: string
   likes: number
+  tags: string[]
 }
 
 export interface TableProps {
-  content: Post[]
+  id: string
+  postType: string
   description: Description
 }
 
 export const Table: FC = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage, setItemsPerPage] = useState(10)
-  const { data, loading, error } = useQuery(GET_POSTS_QUERY)
+  const { data, loading, error } = useQuery(GET_POSTS_QUERY_TABLE)
   useAuthCheck()
 
   if (loading)
@@ -65,17 +62,21 @@ export const Table: FC = () => {
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
   return (
+   
+
     <div className='flex w-full flex-col items-center gap-12 mb-10'>
       <TableHeader />
 
       <div className='flex flex-col gap-5 w-full lg:max-w-screen-md xl:max-w-screen-lg'>
         {currentItems.map((data: TableProps, index: number) => (
           <TableRow
+            id={data.id}
             key={index}
             date={data.description.date}
-            title={data.content[0].title}
+            title={data.description.title}
             likes={data.description.likes}
             author={data.description.author}
+            tags={data.description.tags}
           />
         ))}
       </div>

@@ -1,17 +1,16 @@
 import { gql } from '@apollo/client'
 
-export const GET_POSTS_QUERY = gql`
+export const GET_POSTS_QUERY_TABLE = gql`
   query Posts {
     getPosts {
-      content {
-        id
-        title
-        titleType
-      }
+      id
+      postType
       description {
+        title
         author
         date
         likes
+        tags
       }
     }
   }
