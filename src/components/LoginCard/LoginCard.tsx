@@ -23,7 +23,6 @@ const LoginCard: React.FC = props => {
   const [login, setLogin] = useState('')
   const [password, setPassword] = useState('')
   const router = useRouter()
-  useAuthCheck()
 
   const [executeLogin, { loading, error }] =
     useLazyQuery<LoginResponse>(LOGIN_QUERY, {

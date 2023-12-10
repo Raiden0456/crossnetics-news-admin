@@ -1,5 +1,5 @@
 // library
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 
 // hooks
 import { useMutation } from '@apollo/client'
@@ -11,6 +11,7 @@ import { DELETE_POST_BY_ID } from '@/lib/apollo/deletePost'
 import { TableCell } from '@/components/Table/TableCell/TableCell'
 import { TableButton } from '@/components/Table/TableButton/TableButton'
 import { formatNumber } from '@/utils/format_number'
+import { GET_POSTS_QUERY_TABLE } from '@/lib/apollo/getPosts'
 
 interface TableRowProps {
   id: string
@@ -41,6 +42,22 @@ export const TableRow: FC<TableRowProps> = ({
     useMutation<DeletePostResponse>(DELETE_POST_BY_ID, {
       onCompleted: data => handleDeletePostSuccess(data),
       onError: error => console.error('Delete Post Error:', error),
+      update: (cache, { data }) => {
+        const existingPosts = cache.readQuery<{
+          getPosts: TableRowProps[]
+        }>({
+          query: GET_POSTS_QUERY_TABLE,
+        })
+
+        const newPosts = existingPosts?.getPosts.filter(
+          post => post.id !== id
+        )
+
+        cache.writeQuery({
+          query: GET_POSTS_QUERY_TABLE,
+          data: { getPosts: newPosts },
+        })
+      },
     })
 
   const handleDeletePostSuccess = (data: DeletePostResponse) => {

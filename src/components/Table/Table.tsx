@@ -16,7 +16,7 @@ import { useQuery } from '@apollo/client'
 import { Oval } from 'react-loader-spinner'
 
 // Typescript interface
-export interface Description {
+interface Description {
   title: string
   author: string
   date: string
@@ -25,7 +25,7 @@ export interface Description {
   tags: string[]
 }
 
-export interface TableProps {
+interface TableProps {
   id: string
   postType: string
   description: Description
@@ -37,7 +37,11 @@ export const Table: FC = () => {
   const [itemsPerPage, setItemsPerPage] = useState(10)
   const { data, loading, error } = useQuery(GET_POSTS_QUERY_TABLE)
   // hooks
-  useAuthCheck()
+  const authCheck = useAuthCheck()
+
+  if (!authCheck) {
+    return null
+  }
 
   // check loading
   if (loading)
