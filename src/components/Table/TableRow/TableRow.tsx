@@ -19,7 +19,7 @@ interface TableRowProps {
   title: string
   tags?: string[]
   likes: number
-  views?: number
+  views: number
   author?: string
 }
 
@@ -72,7 +72,7 @@ export const TableRow: FC<TableRowProps> = ({
         {formatNumber(likes)}
       </TableCell>
       <TableCell width='w-10' text_align='text-center'>
-        {/*{formatNumber(views)}*/}
+        {formatNumber(views)}
       </TableCell>
       <div className='flex gap-2 w-40 justify-center'>
         <TableButton color='lavender' text='Edit' />
