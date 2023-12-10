@@ -10,12 +10,12 @@ import { TableRow } from '@/components/Table/TableRow/TableRow'
 // hooks
 import { useAuthCheck } from '@/hooks/useAuthCheck'
 
-//mock
-import { tableData } from '@/components/Table/table-mock/table-mock'
+// mock
 import { GET_POSTS_QUERY_TABLE } from '@/lib/apollo/getPosts'
 import { useQuery } from '@apollo/client'
 import { Oval } from 'react-loader-spinner'
 
+// Typescript interface
 export interface Description {
   title: string
   author: string
@@ -31,11 +31,14 @@ export interface TableProps {
 }
 
 export const Table: FC = () => {
+  // state
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage, setItemsPerPage] = useState(10)
   const { data, loading, error } = useQuery(GET_POSTS_QUERY_TABLE)
+  // hooks
   useAuthCheck()
 
+  // check loading
   if (loading)
     return (
       <div className='mx-auto flex items-center'>
@@ -62,8 +65,6 @@ export const Table: FC = () => {
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
   return (
-   
-
     <div className='flex w-full flex-col items-center gap-12 mb-10'>
       <TableHeader />
 

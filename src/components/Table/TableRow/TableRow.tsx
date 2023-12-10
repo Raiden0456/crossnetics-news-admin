@@ -14,7 +14,6 @@ import { formatNumber } from '@/utils/format_number'
 
 interface TableRowProps {
   id: string
-  postType?: string
   date?: string
   title: string
   tags?: string[]
@@ -31,7 +30,6 @@ interface DeletePostResponse {
 
 export const TableRow: FC<TableRowProps> = ({
   id,
-  postType,
   date,
   title,
   tags,
@@ -50,11 +48,22 @@ export const TableRow: FC<TableRowProps> = ({
   }
 
   const handleDelete = async (
-    e: React.FormEvent<HTMLButtonElement>
+    e: React.MouseEvent<HTMLDivElement>
   ) => {
     e.preventDefault()
-    //await executeDeletePost({ variables: { id } })
-    console.log('Delete Post:', id)
+    try {
+      const response = await executeDeletePost({
+        variables: { deletePostId: id },
+        context: {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        },
+      })
+      console.log('Delete Post Response:', response)
+    } catch (e) {
+      console.error('Error Deleting Post:', e)
+    }
   }
 
   return (
@@ -76,7 +85,11 @@ export const TableRow: FC<TableRowProps> = ({
       </TableCell>
       <div className='flex gap-2 w-40 justify-center'>
         <TableButton color='lavender' text='Edit' />
-        <TableButton color='maroon' text='Delete' onClick={() => handleDelete} />
+        <TableButton
+          color='maroon'
+          text='Delete'
+          onClick={e => handleDelete(e)}
+        />
       </div>
       <TableCell width='w-32' text_align='text-center'>
         {author}
