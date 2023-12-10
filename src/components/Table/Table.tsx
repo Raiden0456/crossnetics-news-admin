@@ -21,6 +21,7 @@ export interface Description {
   author: string
   date: string
   likes: number
+  views: number
   tags: string[]
 }
 
@@ -76,6 +77,7 @@ export const Table: FC = () => {
             date={data.description.date}
             title={data.description.title}
             likes={data.description.likes}
+            views={data.description.views}
             author={data.description.author}
             tags={data.description.tags}
           />

@@ -10,6 +10,7 @@ export const GET_POSTS_QUERY_TABLE = gql`
         author
         date
         likes
+        views
         tags
       }
     }
