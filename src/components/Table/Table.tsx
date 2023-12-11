@@ -1,6 +1,8 @@
 'use client'
 // library
 import React, { FC, useState } from 'react'
+import { useQuery } from '@apollo/client'
+import { Oval } from 'react-loader-spinner'
 
 // components
 import { Pagination } from '@/components/Table/Pagination/Table-Pagination'
@@ -10,12 +12,11 @@ import { TableRow } from '@/components/Table/TableRow/TableRow'
 // hooks
 import { useAuthCheck } from '@/hooks/useAuthCheck'
 
-// mock
+// utils
 import { GET_POSTS_QUERY_TABLE } from '@/lib/apollo/getPosts'
-import { useQuery } from '@apollo/client'
-import { Oval } from 'react-loader-spinner'
+import { useSearchData } from '@/context/SearchArticle'
+import DeleteConfirmationModal from '@/components/Modal/Modal'
 
-// Typescript interface
 interface Description {
   title: string
   author: string
@@ -32,18 +33,22 @@ interface TableProps {
 }
 
 export const Table: FC = () => {
-  // state
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage, setItemsPerPage] = useState(10)
+  const [isModalOpen, setModalOpen] = useState(false)
   const { data, loading, error } = useQuery(GET_POSTS_QUERY_TABLE)
-  // hooks
+  const { searchData } = useSearchData()
+  const postsData = searchData ? searchData.getPosts : data?.getPosts
+
+  const openModal = () => setModalOpen(true)
+  const closeModal = () => setModalOpen(false)
+
   const authCheck = useAuthCheck()
 
   if (!authCheck) {
     return null
   }
 
-  // check loading
   if (loading)
     return (
       <div className='mx-auto flex items-center'>
@@ -63,10 +68,11 @@ export const Table: FC = () => {
   const indexOfLastItem = currentPage * itemsPerPage
   const indexOfFirstItem = indexOfLastItem - itemsPerPage
 
-  const currentItems = data.getPosts.slice(
+  const currentItems = postsData.slice(
     indexOfFirstItem,
     indexOfLastItem
   )
+
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
   return (
@@ -84,6 +90,9 @@ export const Table: FC = () => {
             views={data.description.views}
             author={data.description.author}
             tags={data.description.tags}
+            openModal={openModal}
+            closeModal={closeModal}
+            isModalOpen={isModalOpen}
           />
         ))}
       </div>

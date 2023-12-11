@@ -2,11 +2,11 @@
 import React, { FC } from 'react'
 
 interface InputProps {
-  label: string
+  label?: string
   placeholder: string
   className: string
-  htmlFor: string
-  labelClassName: string
+  htmlFor?: string
+  labelClassName?: string
   id?: string
   value?: string
   onChange?: (e: any) => void

@@ -1,17 +1,12 @@
 // library
 import React, { FC } from 'react'
 
-// hooks
-import { useMutation } from '@apollo/client'
-
-// query
-import { DELETE_POST_BY_ID } from '@/lib/apollo/deletePost'
-
 // components
 import { TableCell } from '@/components/Table/TableCell/TableCell'
 import { TableButton } from '@/components/Table/TableButton/TableButton'
 import { formatNumber } from '@/utils/format_number'
 import { GET_POSTS_QUERY_TABLE } from '@/lib/apollo/getPosts'
+import DeleteConfirmationModal from '@/components/Modal/Modal'
 
 interface TableRowProps {
   id: string
@@ -21,12 +16,9 @@ interface TableRowProps {
   likes: number
   views: number
   author?: string
-}
-
-interface DeletePostResponse {
-  DeletePost: {
-    deletePost: string
-  }
+  openModal: () => void
+  closeModal: () => void
+  isModalOpen: boolean
 }
 
 export const TableRow: FC<TableRowProps> = ({
@@ -37,52 +29,10 @@ export const TableRow: FC<TableRowProps> = ({
   likes,
   views,
   author,
+  openModal,
+  closeModal,
+  isModalOpen,
 }) => {
-  const [executeDeletePost, { loading, error }] =
-    useMutation<DeletePostResponse>(DELETE_POST_BY_ID, {
-      onCompleted: data => handleDeletePostSuccess(data),
-      onError: error => console.error('Delete Post Error:', error),
-      update: (cache, { data }) => {
-        const existingPosts = cache.readQuery<{
-          getPosts: TableRowProps[]
-        }>({
-          query: GET_POSTS_QUERY_TABLE,
-        })
-
-        const newPosts = existingPosts?.getPosts.filter(
-          post => post.id !== id
-        )
-
-        cache.writeQuery({
-          query: GET_POSTS_QUERY_TABLE,
-          data: { getPosts: newPosts },
-        })
-      },
-    })
-
-  const handleDeletePostSuccess = (data: DeletePostResponse) => {
-    console.log('Deleted Post Successful:', data)
-  }
-
-  const handleDelete = async (
-    e: React.MouseEvent<HTMLDivElement>
-  ) => {
-    e.preventDefault()
-    try {
-      const response = await executeDeletePost({
-        variables: { deletePostId: id },
-        context: {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
-        },
-      })
-      console.log('Delete Post Response:', response)
-    } catch (e) {
-      console.error('Error Deleting Post:', e)
-    }
-  }
-
   return (
     <div className='px-7 py-5 bg-ctp-mantle opacity-90 rounded-3xl flex justify-between items-center'>
       <TableCell width='w-20' text_align='text-center'>
@@ -105,12 +55,18 @@ export const TableRow: FC<TableRowProps> = ({
         <TableButton
           color='maroon'
           text='Delete'
-          onClick={e => handleDelete(e)}
+          onClick={openModal}
         />
       </div>
       <TableCell width='w-32' text_align='text-center'>
         {author}
       </TableCell>
+
+      <DeleteConfirmationModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        id={id}
+      />
     </div>
   )
 }
