@@ -1,62 +1,54 @@
-import React from 'react'
-import { TableButton } from '@/components/Table/TableButton/TableButton'
-import { useMutation } from '@apollo/client'
-import { DELETE_POST_BY_ID } from '@/lib/apollo/deletePost'
-import { GET_POSTS_QUERY_TABLE } from '@/lib/apollo/getPosts'
+// Dependencies
+import React from 'react';
+import { useMutation } from '@apollo/client';
 
+// Components and GraphQL
+import { TableButton } from '@/components/Table/TableButton/TableButton';
+import { DELETE_POST_BY_ID } from '@/lib/apollo/deletePost';
+
+// Hooks
+import { useSearchData } from '@/context/SearchArticle';
+
+// Types
 interface DeleteConfirmationModalProps {
-  isOpen: boolean
-  onClose: () => void
-  id: string
-}
-interface ModalProps {
-  id: string
-  date?: string
-  title: string
-  tags?: string[]
-  likes: number
-  views: number
-  author?: string
+  isOpen: boolean;
+  onClose: () => void;
+  id: string;
 }
 
 interface DeletePostResponse {
-  DeletePost: {
-    deletePost: string
-  }
+  deletePost: string;
 }
 
-const DeleteConfirmationModal: React.FC<
-  DeleteConfirmationModalProps
-> = ({ isOpen, onClose, id }) => {
-  const [executeDeletePost, { loading, error }] =
-    useMutation<DeletePostResponse>(DELETE_POST_BY_ID, {
-      onCompleted: data => handleDeletePostSuccess(data),
-      onError: error => console.error('Delete Post Error:', error),
-      update: (cache, { data }) => {
-        const existingPosts = cache.readQuery<{
-          getPosts: ModalProps[]
-        }>({
-          query: GET_POSTS_QUERY_TABLE,
-        })
+const DeleteConfirmationModal: React.FC<DeleteConfirmationModalProps> = ({
+  isOpen,
+  onClose,
+  id,
+}) => {
+  // Custom hook to access and update the search data context
+  const { setSearchData } = useSearchData();
 
-        const newPosts = existingPosts?.getPosts.filter(
-          post => post.id !== id
-        )
-
-        cache.writeQuery({
-          query: GET_POSTS_QUERY_TABLE,
-          data: { getPosts: newPosts },
-        })
-      },
-    })
+  // Setting up the mutation
+  const [executeDeletePost, { loading, error }] = useMutation<DeletePostResponse>(DELETE_POST_BY_ID, {
+    onCompleted: data => handleDeletePostSuccess(data),
+    onError: (error) => console.error('Delete Post Error:', error),
+  });
 
   const handleDeletePostSuccess = (data: DeletePostResponse) => {
-    console.log('Deleted Post Successful:', data)
-  }
+    // Update the context data
+    setSearchData(prevData => ({
+      ...prevData,
+      getPosts: prevData?.getPosts.filter(post => post.id !== id) || [],
+    }));
 
+    // Close the modal
+    onClose();
+  };
+
+  // Handle the delete
   const handleDelete = async () => {
-    console.log(id)
     try {
+      // Mutation with the post ID
       const response = await executeDeletePost({
         variables: { deletePostId: id },
         context: {
@@ -64,15 +56,17 @@ const DeleteConfirmationModal: React.FC<
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
         },
-      })
-      console.log('Delete Post Response:', response)
+      });
+      console.log('Delete Post Response:', response);
     } catch (e) {
-      console.error('Error Deleting Post:', e)
+      console.error('Error Deleting Post:', e);
     }
-  }
+  };
 
-  if (!isOpen) return null
+  // Render nothing if the modal is not open
+  if (!isOpen) return null;
 
+  // Modal layout
   return (
     <div className='fixed inset-0 z-50 overflow-auto bg-black bg-opacity-20 flex'>
       <div className='relative p-8 bg-white w-full max-w-md m-auto flex-col flex rounded-lg'>
@@ -82,20 +76,12 @@ const DeleteConfirmationModal: React.FC<
           </h3>
         </div>
         <div className='mt-4 flex justify-between items-center'>
-          <TableButton
-            color='maroon'
-            text='Cancel'
-            onClick={onClose}
-          />
-          <TableButton
-            color='maroon'
-            text='Delete'
-            onClick={handleDelete}
-          />
+          <TableButton color='maroon' text='Cancel' onClick={onClose} />
+          <TableButton color='maroon' text='Delete' onClick={handleDelete} />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default DeleteConfirmationModal
+export default DeleteConfirmationModal;

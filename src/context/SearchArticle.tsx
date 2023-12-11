@@ -1,8 +1,9 @@
 import React, { createContext, useContext, useState, FC } from 'react'
 
 interface Post {
+  id: string
+  postType: string
   description: {
-    id: string
     date?: string
     title: string
     tags?: string[]
