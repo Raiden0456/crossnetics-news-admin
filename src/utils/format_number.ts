@@ -1,15 +1,21 @@
 export function formatNumber(num: number) {
-  if (num < 1000) {
-    return num.toString()
+  let result: string;
+  switch (true) {
+    case num < 1000:
+      result = num.toString();
+      break;
+    case num < 1000000:
+      result = (num / 1000).toFixed(2) + 'K';
+      break;
+    case num < 1000000000:
+      result = (num / 1000000).toFixed(2) + 'M';
+      break;
+    case num < 1000000000000:
+      result = (num / 1000000000).toFixed(2) + 'B';
+      break;
+    default:
+      result = (num / 1000000000000).toFixed(2) + 'T';
+      break;
   }
-  if (num < 1000000) {
-    return (num / 1000).toFixed(2) + 'K'
-  }
-  if (num < 1000000000) {
-    return (num / 1000000).toFixed(2) + 'M'
-  }
-  if (num < 1000000000000) {
-    return (num / 1000000000).toFixed(2) + 'B'
-  }
-  return (num / 1000000000000).toFixed(2) + 'T'
+  return result;
 }
